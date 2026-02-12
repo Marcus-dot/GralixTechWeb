@@ -1,0 +1,21 @@
+import{c as a,j as e,m as s}from"./index-cpcWaCZJ.js";import{M as n}from"./map-pin-R6fm2mlg.js";/**
+ * @license lucide-react v0.462.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const r=a("Cpu",[["rect",{width:"16",height:"16",x:"4",y:"4",rx:"2",key:"14l7u7"}],["rect",{width:"6",height:"6",x:"9",y:"9",rx:"1",key:"5aljv4"}],["path",{d:"M15 2v2",key:"13l42r"}],["path",{d:"M15 20v2",key:"15mkzm"}],["path",{d:"M2 15h2",key:"1gxd5l"}],["path",{d:"M2 9h2",key:"1bbxkp"}],["path",{d:"M20 15h2",key:"19e6y8"}],["path",{d:"M20 9h2",key:"19tzq7"}],["path",{d:"M9 2v2",key:"165o2o"}],["path",{d:"M9 20v2",key:"i2bqo8"}]]);/**
+ * @license lucide-react v0.462.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const o=a("FileCheck",[["path",{d:"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z",key:"1rqfz7"}],["path",{d:"M14 2v4a2 2 0 0 0 2 2h4",key:"tnqrlb"}],["path",{d:"m9 15 2 2 4-4",key:"1grp1n"}]]);/**
+ * @license lucide-react v0.462.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const l=a("Layers",[["path",{d:"m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z",key:"8b97xw"}],["path",{d:"m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65",key:"dd6zsq"}],["path",{d:"m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65",key:"ep9fru"}]]);/**
+ * @license lucide-react v0.462.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const d=a("Puzzle",[["path",{d:"M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z",key:"w46dr5"}]]),c=[{icon:n,title:"Local Expertise with Global Standards",description:"Understanding the unique Zambian market while adhering to international standards."},{icon:d,title:"Bespoke Solutions for Diverse Industries",description:"Customized software for insurance, finance, pension funds, and investment sectors."},{icon:r,title:"Cutting-Edge Technology",description:"Advanced statistical modeling, machine learning, and real-time data analytics."},{icon:l,title:"Seamless Integration & Scalability",description:"Effortless integration with existing systems that scale as your business grows."},{icon:o,title:"Commitment to Compliance",description:"Prioritizing regulatory compliance to keep you ahead of evolving regulations."}],m=()=>e.jsx("section",{id:"why-us",className:"py-24 gradient-navy",children:e.jsxs("div",{className:"container mx-auto px-6",children:[e.jsxs(s.div,{initial:{opacity:0,y:20},whileInView:{opacity:1,y:0},viewport:{once:!0},className:"text-center mb-16",children:[e.jsx("span",{className:"text-accent font-semibold text-sm uppercase tracking-widest",children:"Why Choose Us"}),e.jsx("h2",{className:"text-3xl md:text-4xl font-extrabold text-primary-foreground mt-3",children:"Your Partner in Digital Excellence"})]}),e.jsx("div",{className:"grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto",children:c.map((t,i)=>e.jsxs(s.div,{initial:{opacity:0,y:20},whileInView:{opacity:1,y:0},whileHover:{y:-5},viewport:{once:!0},transition:{delay:i*.1},className:`flex items-start gap-4 p-6 rounded-xl border border-primary-foreground/10 hover:border-accent/40 transition-colors ${i===4?"sm:col-span-2 lg:col-span-1 lg:col-start-2":""}`,children:[e.jsx("div",{className:"w-10 h-10 gradient-orange rounded-lg flex items-center justify-center shrink-0",children:e.jsx(t.icon,{size:18,className:"text-accent-foreground"})}),e.jsxs("div",{children:[e.jsx("h3",{className:"font-bold text-primary-foreground mb-1 text-sm",children:t.title}),e.jsx("p",{className:"text-primary-foreground/60 text-sm leading-relaxed",children:t.description})]})]},t.title))})]})});export{m as default};
