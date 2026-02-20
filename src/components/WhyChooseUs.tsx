@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, Puzzle, Cpu, Layers, FileCheck } from "lucide-react";
+import { useGsapScrollReveal } from "@/hooks/useGsapScrollReveal";
 
 const reasons = [
   { icon: MapPin, title: "Local Expertise with Global Standards", description: "Understanding the unique Zambian market while adhering to international standards." },
@@ -10,39 +11,38 @@ const reasons = [
 ];
 
 const WhyChooseUs = () => {
+  const headingRef = useGsapScrollReveal({ direction: "bottom", duration: 0.7 });
+  const gridRef = useGsapScrollReveal<HTMLDivElement>({
+    childSelector: ".reason-card",
+    stagger: 0.1,
+    direction: "bottom",
+    distance: 40,
+  });
+
   return (
-    <section id="why-us" className="py-24 gradient-navy">
+    <section id="why-us" className="py-24 bg-background transition-colors duration-500">
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div ref={headingRef} className="text-center mb-16">
           <span className="text-accent font-semibold text-sm uppercase tracking-widest">Why Choose Us</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground mt-3">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mt-3">
             Your Partner in Digital Excellence
           </h2>
-        </motion.div>
+        </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div ref={gridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {reasons.map((r, i) => (
             <motion.div
               key={r.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -5 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`flex items-start gap-4 p-6 rounded-xl border border-primary-foreground/10 hover:border-accent/40 transition-colors ${i === 4 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2" : ""
+              className={`reason-card flex items-start gap-4 p-6 rounded-xl border border-border bg-card hover:border-accent/40 transition-all hover:shadow-lg ${i === 4 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2" : ""
                 }`}
+              whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
             >
-              <div className="w-10 h-10 gradient-orange rounded-lg flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 gradient-orange rounded-lg flex items-center justify-center shrink-0 shadow-md">
                 <r.icon size={18} className="text-accent-foreground" />
               </div>
               <div>
-                <h3 className="font-bold text-primary-foreground mb-1 text-sm">{r.title}</h3>
-                <p className="text-primary-foreground/60 text-sm leading-relaxed">{r.description}</p>
+                <h3 className="font-bold text-card-foreground mb-1 text-sm">{r.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{r.description}</p>
               </div>
             </motion.div>
           ))}

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -91,27 +89,150 @@
     @apply bg-background text-foreground font-body antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Smooth theme transitions */
+  html.theme-transitioning,
+  html.theme-transitioning *,
+  html.theme-transitioning *::before,
+  html.theme-transitioning *::after {
+    transition: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease !important;
+  }
+}
+
+/* ─── Reduce Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
 @layer utilities {
   .gradient-navy {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+  }
+
+  .dark .gradient-navy {
     background: linear-gradient(135deg, hsl(233 41% 23%), hsl(233 35% 15%));
   }
+
   .gradient-orange {
-    background: linear-gradient(135deg, hsl(17 81% 54%), hsl(17 81% 45%));
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent) / 0.85));
   }
+
   .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--background) / 0.95), hsl(var(--background) / 0.9));
+  }
+
+  .dark .gradient-hero {
     background: linear-gradient(135deg, hsl(233 41% 23% / 0.95), hsl(233 50% 12% / 0.9));
   }
+
   .text-gradient-orange {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(17 81% 54%), hsl(17 81% 65%));
+    background-image: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent) / 1.2));
+  }
+}
+
+
+@keyframes wa-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(34, 197, 94, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* ─── Hero CSS Fallback Gradient Mesh ─── */
+@keyframes gradient-shift-1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes gradient-shift-2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(-40px, 20px) scale(0.9);
+  }
+
+  66% {
+    transform: translate(20px, -30px) scale(1.1);
+  }
+}
+
+@keyframes gradient-shift-3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(20px, 40px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-30px, -20px) scale(0.9);
+  }
+}
+
+/* ─── Scan Line ─── */
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* ─── WhatsApp Pulse ─── */
+@keyframes wa-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
 }

@@ -1,64 +1,140 @@
+import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Calendar, ArrowRight } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const articles = [
     {
         id: 1,
-        title: "The Future of Fintech in Zambia",
-        excerpt: "Exploring how digital payments and mobile banking are transforming the financial landscape in Zambia.",
-        date: "Oct 12, 2025",
-        category: "Fintech"
+        title: "The Future of Insurance Technology in Africa",
+        excerpt: "Exploring how insurtech is reshaping the African insurance landscape with innovative solutions.",
+        category: "Insurtech",
+        date: "2024-12-15",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     },
     {
         id: 2,
-        title: "Why IFRS 17 Matters for Insurers",
-        excerpt: "A deep dive into the new accounting standard and what it means for insurance companies' reporting requirements.",
-        date: "Sep 28, 2025",
-        category: "Compliance"
+        title: "Understanding IFRS 17: A Complete Guide",
+        excerpt: "Everything you need to know about IFRS 17 compliance and its impact on insurance companies.",
+        category: "Compliance",
+        date: "2024-11-28",
+        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800",
     },
     {
         id: 3,
-        title: "Leveraging AI for Credit Scoring",
-        excerpt: "How machine learning models are improving loan approval accuracy and reducing default rates.",
-        date: "Sep 15, 2025",
-        category: "AI & Data"
-    }
+        title: "How Machine Learning is Revolutionizing Fraud Detection",
+        excerpt: "Discover how AI and machine learning algorithms are transforming insurance fraud detection.",
+        category: "AI & ML",
+        date: "2024-11-10",
+        image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&q=80&w=800",
+    },
+    {
+        id: 4,
+        title: "Digital Transformation in Zambian Financial Services",
+        excerpt: "How Zambian fintech companies are leading the digital revolution in Africa's financial sector.",
+        category: "Fintech",
+        date: "2024-10-22",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    },
 ];
 
 const Insights = () => {
+    const gridRef = useRef<HTMLDivElement>(null);
+    const headingRef = useRef<HTMLDivElement>(null);
+    const prefersReducedMotion = useReducedMotion();
+
+    useEffect(() => {
+        if (prefersReducedMotion) return;
+
+        if (headingRef.current) {
+            gsap.from(headingRef.current.children, {
+                opacity: 0,
+                y: 30,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: "power3.out",
+            });
+        }
+
+        if (gridRef.current) {
+            gsap.from(gridRef.current.children, {
+                opacity: 0,
+                y: 50,
+                duration: 0.7,
+                stagger: 0.12,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: gridRef.current,
+                    start: "top 85%",
+                },
+            });
+        }
+    }, [prefersReducedMotion]);
+
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
 
-            <section className="pt-32 pb-20 bg-secondary/30">
-                <div className="container mx-auto px-6 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Insights & News</h1>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                        Stay updated with the latest trends in technology, finance, and digital transformation.
-                    </p>
-                </div>
-            </section>
-
-            <section className="py-20">
+            <section className="pt-32 pb-24">
                 <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div ref={headingRef} className="text-center mb-16">
+                        <span className="text-accent font-semibold text-sm uppercase tracking-widest">Insights</span>
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mt-3">
+                            Industry Trends & Thought Leadership
+                        </h1>
+                        <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                            Stay informed with the latest developments in fintech, insurtech, and compliance across Africa.
+                        </p>
+                    </div>
+
+                    <div ref={gridRef} className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                         {articles.map((article) => (
-                            <article key={article.id} className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                                <div className="h-48 bg-muted/50 w-full" /> {/* Placeholder image */}
+                            <motion.article
+                                key={article.id}
+                                className="group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-shadow"
+                                whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                            >
+                                <div className="aspect-video overflow-hidden">
+                                    <img
+                                        src={article.image}
+                                        alt={article.title}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        loading="lazy"
+                                    />
+                                </div>
                                 <div className="p-6">
-                                    <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
-                                        <span className="px-2 py-1 bg-accent/10 text-accent rounded-full">{article.category}</span>
-                                        <span>{article.date}</span>
+                                    <div className="flex items-center gap-4 mb-3">
+                                        <span className="text-xs font-semibold text-accent bg-accent/10 px-3 py-1 rounded-full">
+                                            {article.category}
+                                        </span>
+                                        <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                            <Calendar size={12} />
+                                            {new Date(article.date).toLocaleDateString("en-US", {
+                                                year: "numeric",
+                                                month: "short",
+                                                day: "numeric",
+                                            })}
+                                        </span>
                                     </div>
-                                    <h3 className="text-xl font-bold text-foreground mb-3">{article.title}</h3>
-                                    <p className="text-muted-foreground text-sm mb-6 line-clamp-3">{article.excerpt}</p>
-                                    <Link to="#" className="inline-flex items-center text-accent text-sm font-medium hover:underline">
-                                        Read More <ArrowRight size={14} className="ml-1" />
+                                    <h2 className="text-lg font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
+                                        {article.title}
+                                    </h2>
+                                    <p className="text-sm text-muted-foreground mb-4">{article.excerpt}</p>
+                                    <Link
+                                        to="#"
+                                        className="text-sm font-medium text-accent flex items-center gap-1 hover:gap-2 transition-all"
+                                    >
+                                        Read More <ArrowRight size={14} />
                                     </Link>
                                 </div>
-                            </article>
+                            </motion.article>
                         ))}
                     </div>
                 </div>
